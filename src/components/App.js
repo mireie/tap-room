@@ -9,9 +9,9 @@ function App() {
     <React.Fragment>
       <Container className="mt-3">
         <Row>
-          <Col>
+
           <KegControl />
-          </Col>
+
         </Row>
       </Container>
     </React.Fragment>

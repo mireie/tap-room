@@ -13,7 +13,7 @@ export default function Keg(props) {
               {props.description}
             </Card.Text>
             <ul>
-              <li>Brand: {props.brand}</li>
+              <li>Brewry: {props.brand}</li>
               <li>ABV: {props.abv}</li>
               <li>Quantity: {props.qty}</li>
               <li>ID: {props.id}</li>
