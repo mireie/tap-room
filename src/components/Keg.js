@@ -8,7 +8,8 @@ export default function Keg(props) {
     brand: props.brand,
     qty: props.qty,
     id: props.id,
-    abv: props.abv
+    abv: props.abv,
+    price: props.price
   }
 
 
@@ -43,7 +44,8 @@ export default function Keg(props) {
                 </Card.Text>
                 <ul>
                   <li>Brewery: {props.brand}</li>
-                  <li>ABV: {props.abv}</li>
+                  <li>Price: ${props.price}</li>
+                  <li>ABV: {props.abv}%</li>
                   <li>Quantity: {props.qty}</li>
                 </ul>
                 <Button
