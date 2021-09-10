@@ -1,8 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card } from "react-bootstrap"
+import { Card, Button} from "react-bootstrap"
 
 export default function Keg(props) {
+  console.log(props)
+  const keg = {
+    name: props.name,
+    brand: props.brand,
+    qty: props.qty,
+    id: props.id
+  }
+  console.log(keg)
   return(
     <React.Fragment>
       <div className="col-6 mb-3">
@@ -18,6 +26,13 @@ export default function Keg(props) {
               <li>Quantity: {props.qty}</li>
               <li>ID: {props.id}</li>
             </ul>
+            <Button
+              type="submit"
+              variant="success"
+              className="m-3"
+              onClick={() => props.pintMinus(keg)} >
+              Sell Pint
+              </Button>
           </Card.Body>
         </Card>
       </div>
@@ -31,5 +46,6 @@ Keg.propTypes = {
   qty: PropTypes.number.isRequired,
   abv: PropTypes.number.isRequired,
   id: PropTypes.string,
-  whenKegClicked: PropTypes.func
+  whenKegClicked: PropTypes.func,
+  pintMinus: PropTypes.func
 }

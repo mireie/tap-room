@@ -48,18 +48,33 @@ export default class KegControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedKeg != null) {
       this.setState({
-        formVisibleOnPage:false,
+        formVisibleOnPage: false,
         selectedKeg: null
       })
     } else
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }))
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }))
   }
 
   handleAddingNewKegToList = (newKeg) => {
     const newMainKegList = this.state.mainKegList.concat(newKeg)
     this.setState({ mainKegList: newMainKegList, formVisibleOnPage: false })
+  }
+
+  handleRemovePint = (kegToEdit) => {
+    let updatedKeg = kegToEdit
+    --updatedKeg.qty
+    if (updatedKeg.quantity < 0) {
+      updatedKeg.quantity = 0
+    } else {
+      const editedMainKegList = this.state.mainKegList
+        .filter(keg => keg.id !== kegToEdit.id)
+        .concat(updatedKeg)
+      this.setState({
+        mainKegList: editedMainKegList
+      })
+    }
   }
 
   render() {
@@ -73,7 +88,11 @@ export default class KegControl extends React.Component {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to Keg List"
     } else {
-      currentlyVisibleState = <KegList kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg} />
+      currentlyVisibleState = <KegList
+        kegList={this.state.mainKegList}
+        onKegSelection={this.handleChangingSelectedKeg}
+        subtractPint={this.handleRemovePint}
+      />
       buttonText = "Add a New Keg"
     }
     return (

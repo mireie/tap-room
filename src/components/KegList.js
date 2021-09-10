@@ -6,8 +6,9 @@ export default function KegList(props) {
   return (
     <React.Fragment>
       {props.kegList.map((keg) =>
-        <Keg 
-          whenKegClicked = {props.onKegSelection}
+        <Keg
+          whenKegClicked={props.onKegSelection}
+          pintMinus={props.subtractPint}
           name={keg.name}
           brand={keg.brand}
           price={keg.price}
@@ -15,7 +16,7 @@ export default function KegList(props) {
           abv={keg.abv}
           key={keg.id}
           id={keg.id}
-          />
+        />
       )}
     </React.Fragment>
   )
