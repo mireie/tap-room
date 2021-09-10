@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 export default function Keg(props) {
   return(
@@ -13,6 +13,8 @@ export default function Keg(props) {
               {props.description}
             </Card.Text>
             <ul>
+              <li>Brand: {props.brand}</li>
+              <li>ABV: {props.abv}</li>
               <li>Quantity: {props.qty}</li>
               <li>ID: {props.id}</li>
             </ul>
@@ -27,6 +29,6 @@ Keg.propTypes = {
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
   qty: PropTypes.number.isRequired,
+  abv: PropTypes.number.isRequired,
   id: PropTypes.string,
-  whenKegClicked: PropTypes.func,
 }

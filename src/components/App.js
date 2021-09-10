@@ -1,7 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap"
-import KegDetail from "./KegDetail";
-import KegList from "./KegList";
 import KegControl from "./KegControl";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
