@@ -1,26 +1,37 @@
 import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKeg';
+import { Button } from 'react-bootstrap'
 
 export default class KegControl extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      formVisisbleOnPage: false
+      formVisibleOnPage: false
     }
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }))
+  }
+
   render(){
-    let currentlyVisibleState = null;
-    if (this.state.formVisisbleOnPage) {
+    let currentlyVisibleState = null
+    let buttonText = null;
+    if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm />
+      buttonText = "Return to Keg List"
     } else {
       currentlyVisibleState = <KegList />
+      buttonText = "Add Keg"
     }
     return(
       <React.Fragment>
         {currentlyVisibleState}
+        <Button onClick = {this.handleClick}>{buttonText}</Button>
       </React.Fragment>
     )
   }
