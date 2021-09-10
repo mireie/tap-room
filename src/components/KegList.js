@@ -5,6 +5,7 @@ import Keg from "./Keg";
 export default function KegList(props) {
   return (
     <React.Fragment>
+      <h1 className="display-1">Kegs</h1>
       {props.kegList.map((keg) =>
         <Keg
           whenKegClicked={props.onKegSelection}

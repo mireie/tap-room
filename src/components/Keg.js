@@ -27,7 +27,7 @@ export default function Keg(props) {
 
   return (
     <React.Fragment>
-      <div className="col-6 mb-3">
+      <div className="col-md-4 mb-3">
         <Card>
           <Card.Body>
             <Row>
