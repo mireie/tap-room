@@ -16,7 +16,6 @@ export default function Keg(props) {
   if (props.qty < 1) {
     sellText = "Keg's bone dry!"
     sellVariant = "light"
-    document.getElementById(`id-${props.id}`).disabled = true
   }
 
   return (
