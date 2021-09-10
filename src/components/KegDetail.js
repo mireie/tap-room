@@ -12,6 +12,7 @@ export default function KegDetail(props) {
           <h2 className="display-2">Details</h2>
           <ul>
             <li>Brewry: {keg.brand}</li>
+            <li>Price: ${keg.price}</li>
             <li>ABV: {keg.abv}%</li>
             <li>Quantity: {keg.qty} pints remain</li>
             <li>ID: {keg.id}</li>
