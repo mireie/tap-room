@@ -13,7 +13,7 @@
 
 A one-day React project after one week of learning React. A mock inventory tracker for kegs for a taproom. Users can add kegs, decrease the qty of the keg by pints, and remove kegs.
 
-# Component Diagaram
+# Component Diagram
 
 ![Keg Component Diagram](https://user-images.githubusercontent.com/84690831/132927493-f586472b-d83e-43d6-bcc1-f48db5d99382.png)
 
