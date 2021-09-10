@@ -23,7 +23,7 @@ export default class KegControl extends React.Component {
           name: 'Pliny the Elder',
           brand: 'Russian River Brewing',
           price: 7,
-          qty: 124,
+          qty: 5,
           abv: 8,
           id: "beer-2"
         },
@@ -65,8 +65,8 @@ export default class KegControl extends React.Component {
   handleRemovePint = (kegToEdit) => {
     let updatedKeg = kegToEdit
     --updatedKeg.qty
-    if (updatedKeg.quantity < 0) {
-      updatedKeg.quantity = 0
+    if (updatedKeg.qty < 0) {
+      updatedKeg.qty = 0
     } else {
       const editedMainKegList = this.state.mainKegList
         .filter(keg => keg.id !== kegToEdit.id)
@@ -89,7 +89,7 @@ export default class KegControl extends React.Component {
       buttonText = "Return to Keg List"
     } else {
       currentlyVisibleState = <KegList
-        kegList={this.state.mainKegList}
+        kegList={this.state.mainKegList.sort(dynamicSort("name"))}
         onKegSelection={this.handleChangingSelectedKeg}
         subtractPint={this.handleRemovePint}
       />
@@ -101,5 +101,13 @@ export default class KegControl extends React.Component {
         <Button className="mt-3" onClick={this.handleClick}>{buttonText}</Button>
       </React.Fragment>
     )
+  }
+}
+
+const dynamicSort = (prop) => {
+  let sortOrder = 1;
+  return function (a, b) {
+    const result = (a[prop] < b[prop]) ? -1 : (a[prop] > b[prop]) ? 1 : 0;
+    return result * sortOrder;
   }
 }
