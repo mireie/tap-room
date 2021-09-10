@@ -12,7 +12,7 @@ export default function Keg(props) {
   }
 
 
-  const remainPercent = Math.floor((props.qty / 144) * 100)
+  const remainPercent = Math.floor((props.qty / 124) * 100)
   const cardStyles = {
     background: `linear-gradient(to top, #f28e1c ${remainPercent}%, white 0%)`
   }
