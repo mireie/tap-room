@@ -1,7 +1,8 @@
 import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKeg';
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
+import KegDetail from './KegDetail';
 
 export default class KegControl extends React.Component {
 
@@ -34,13 +35,23 @@ export default class KegControl extends React.Component {
           abv: 6.5,
           id: "beer-3"
         }
-      ]
+      ],
+      selectedKeg: null
     }
   }
 
-  
+  handleChangingSelectedKeg = (id) => {
+    const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0]
+    this.setState({ selectedKeg: selectedKeg })
+  }
 
   handleClick = () => {
+    if (this.state.selectedKeg != null) {
+      this.setState({
+        formVisibleOnPage:false,
+        selectedKeg: null
+      })
+    } else
     this.setState(prevState => ({
       formVisibleOnPage: !prevState.formVisibleOnPage
     }))
@@ -48,23 +59,27 @@ export default class KegControl extends React.Component {
 
   handleAddingNewKegToList = (newKeg) => {
     const newMainKegList = this.state.mainKegList.concat(newKeg)
-    this.setState({mainKegList: newMainKegList, formVisibleOnPage: false})
+    this.setState({ mainKegList: newMainKegList, formVisibleOnPage: false })
   }
 
-  render(){
+  render() {
     let currentlyVisibleState = null
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+
+    if (this.state.selectedKeg != null) {
+      currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} />
+      buttonText = "Return to Keg List"
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to Keg List"
     } else {
-      currentlyVisibleState = <KegList kegList={this.state.mainKegList} />
+      currentlyVisibleState = <KegList kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg} />
       buttonText = "Add a New Keg"
     }
-    return(
+    return (
       <React.Fragment>
         {currentlyVisibleState}
-        <Button className="mt-3" onClick = {this.handleClick}>{buttonText}</Button>
+        <Button className="mt-3" onClick={this.handleClick}>{buttonText}</Button>
       </React.Fragment>
     )
   }
