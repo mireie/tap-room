@@ -30,5 +30,5 @@ Keg.propTypes = {
   brand: PropTypes.string.isRequired,
   qty: PropTypes.number.isRequired,
   abv: PropTypes.number.isRequired,
-  id: PropTypes.string,
+  id: PropTypes.string
 }

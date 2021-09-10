@@ -6,14 +6,17 @@ import KegForm from "./KegForm"
 export default function NewKegForm(props) {
   function handleNewKegFormSubmission(event) {
     event.preventDefault()
-    props.onNewKegCreation({
-      name: event.target.name.value,
-      brand: event.target.brand.value,
-      abv: event.target.abv.value,
-      quantity: 124,
-      price: event.target.price.value,
-      id: v4()
-    })
+    console.log("hi")
+    props.onNewKegCreation(
+      {
+        name: event.target.name.value,
+        brand: event.target.brand.value,
+        abv: event.target.abv.value,
+        qty: 124,
+        price: event.target.price.value,
+        id: v4()
+      }
+    )
   }
 
 

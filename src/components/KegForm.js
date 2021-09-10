@@ -6,7 +6,7 @@ import { Form, Button } from 'react-bootstrap'
 export default function KegForm(props) {
   return (
     <React.Fragment>
-      <Form onSubmit={props.formSubnmissionHandler}>
+      <Form onSubmit={props.formSubmissionHandler}>
         <Form.Group
           className="mb-3"
           controlId="kegName">
@@ -49,7 +49,7 @@ export default function KegForm(props) {
             type="number"
             name="abv"
             required
-            step=".01"
+            step=".1"
           >
           </Form.Control>
         </Form.Group>

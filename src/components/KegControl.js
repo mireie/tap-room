@@ -15,21 +15,24 @@ export default class KegControl extends React.Component {
           brand: 'Boneyard',
           price: 5,
           qty: 124,
-          abv: 6.5
+          abv: 6.5,
+          id: "beer-1"
         },
         {
           name: 'Pliny the Elder',
           brand: 'Russian River Brewing',
           price: 7,
           qty: 124,
-          abv: 8
+          abv: 8,
+          id: "beer-2"
         },
         {
           name: 'Astrovision',
           brand: 'Ruse',
           price: 6,
           qty: 124,
-          abv: 6.5
+          abv: 6.5,
+          id: "beer-3"
         }
       ]
     }
