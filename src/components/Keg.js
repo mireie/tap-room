@@ -14,7 +14,8 @@ export default function Keg(props) {
 
   const remainPercent = Math.floor((props.qty / 124) * 100)
   const cardStyles = {
-    background: `linear-gradient(to top, #f28e1c ${remainPercent}%, white 0%)`
+    background: `linear-gradient(to top, #f28e1c ${remainPercent}%, #efefef 0%)`,
+    border: "solid #eee 2px"
   }
 
 
@@ -27,12 +28,16 @@ export default function Keg(props) {
 
   return (
     <React.Fragment>
-      <div className="col-md-4 mb-3">
+      <div className="col-md-6 mb-3">
         <Card>
           <Card.Body>
             <Row>
+              <Card.Title
+                onClick={() => props.whenKegClicked(props.id)}
+                className="display-3">
+                {props.name}
+              </Card.Title>
               <Col>
-                <Card.Title onClick={() => props.whenKegClicked(props.id)}>{props.name}</Card.Title>
                 <Card.Text>
                   {props.description}
                 </Card.Text>
@@ -51,12 +56,13 @@ export default function Keg(props) {
                 </Button>
               </Col>
               <Col
+                className="col-4"
                 style={cardStyles}>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </div>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      </div>
     </React.Fragment >
   )
 }
